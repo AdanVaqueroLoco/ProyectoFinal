@@ -2,7 +2,7 @@ import sounddevice as sd
 import numpy as np
 
 periodo_muestreo = 1.0/44100
-nota = "nota"
+cuerda = "cuerda"
 
 print(sd.query_devices()) 
 
@@ -21,26 +21,6 @@ def callback_stream(indata, outdata, frames, time, status):
     frecuencias = np.fft.rfftfreq(len(data), periodo_muestreo)
     print("Frecuencia fundamental: ", frecuencias[np.argmax(np.abs(transformada))])
     #outdata[:] = indata
-    if frecuencia_fundamental >= 324  and frecuencia_fundamental <= 335:
-        nota = "E4 Correcta"
-
-    elif frecuencia_fundamental >= 241  and frecuencia_fundamental <= 251:
-        nota = "B3 Correcta"
-
-    elif frecuencia_fundamental >= 191  and frecuencia_fundamental <= 201:
-        nota = "G3 Correcta"
-
-    elif frecuencia_fundamental >= 141  and frecuencia_fundamental <= 151:
-        nota = "D3 Correcta"
-
-    elif frecuencia_fundamental >= 105  and frecuencia_fundamental <= 115:
-        nota = "A2 Correcta"
-
-    elif frecuencia_fundamental >= 77  and frecuencia_fundamental <= 108:
-        nota = "E2 Correcta"
-
-    else:
-        nota = "Es recomendable ajustar la cuerda"
 
 try:
     with sd.Stream(

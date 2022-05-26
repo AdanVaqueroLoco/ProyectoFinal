@@ -25,19 +25,19 @@ class StreamThread(Thread):
 
         app.etiqueta_valor_ff["text"] = frecuencia_fundamental
         if frecuencia_fundamental >= 435  and frecuencia_fundamental <= 445:
-            print("A4 Correcta")
+            app.etiqueta_nota["text"] = "A4 Correcta"
 
         elif frecuencia_fundamental >= 325  and frecuencia_fundamental <= 335:
-            print("E4 Correcta")
+            app.etiqueta_nota["text"] = "E4 Correcta"
 
         elif frecuencia_fundamental >= 256  and frecuencia_fundamental <= 266:
-            print("C4 Correcta")
+            app.etiqueta_nota["text"] = "C4 Correcta"
 
         elif frecuencia_fundamental >= 387  and frecuencia_fundamental <= 397:
-            print("G4 Correcta")
+            app.etiqueta_nota["text"] = "G4 Correcta"
 
         else:
-            print("Es recomendable ajustar la cuerda")
+            app.etiqueta_nota["text"] = "Es recomendable ajustar la cuerda"
 
 
     def run(self):
@@ -79,6 +79,12 @@ class App(tk.Tk):
 
         self.etiqueta_valor_estado = tk.Label(text="-")
         self.etiqueta_valor_estado.grid(column=1, row=1)
+
+        etiqueta_Nombre_Nota = tk.Label(text="Nota: ")
+        etiqueta_Nombre_Nota.grid(column=0, row=3)
+
+        self.etiqueta_nota = tk.Label(text="-")
+        self.etiqueta_nota.grid(column=1, row=3)
 
         etiqueta_nota = tk.Label(text= "Necesita afinamiento: ")
         etiqueta_nota.grid(column=0, row= 2)
